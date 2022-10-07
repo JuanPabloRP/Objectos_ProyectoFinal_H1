@@ -3,7 +3,7 @@
 namespace Objectos_ProyectoFinal_H1
 {
 
-    //clase usuarios
+    //clase usuarios que maneja el software
     class Usuario
     {
         public int id { get; set; }
@@ -23,29 +23,54 @@ namespace Objectos_ProyectoFinal_H1
         }
     }
 
-    class Vehiculo
+    //cliente, el dueño del vehiculo - También esta clase puede ser llamada vehiculo
+    class Cliente
     {
         public int id { get; set; }
         public string tipo { get; set; }
         public string placa { get; set; }
         public string color { get; set; }
+        public double totalAPagar { get; set; }
 
-        public Vehiculo(int _id)
+        public Cliente(int _id)
         {
             id = _id;
             tipo = null;
             placa = null;
             color = null;
+            totalAPagar = 0;
+        }
+
+        
+
+    }
+
+    //el lugar de estacionamiento, esta clase se usara internamente para el funcionamiento
+    class Lugar
+    {
+        public int id { get; set; }
+        public string puesto { get; set; }
+        public bool disponible { get; set; }
+
+
+        public Lugar(int _id)
+        {
+            id = _id;
+            puesto = null;
+            disponible = true;
         }
 
     }
+
 
     class Program
     {
         
         static void Main()
         {
-            /*
+
+            //Pa crear un usuario
+            Console.WriteLine("\nPa crear el usuario admin: ");
             int id = 0;
             
             Console.Write("Ingrese su id: ");
@@ -73,37 +98,66 @@ namespace Objectos_ProyectoFinal_H1
             Console.WriteLine("Username del sujeto: " + user.username);
             Console.WriteLine("PassW del sujeto: " + user.password);
             Console.WriteLine("\n");
-            */
 
+
+            //pa crear un vehiculo
+            Console.WriteLine("\nPa crear el cliente/vehiculo: ");
+            id = 0;
             
-            int id = 0;
-
-            Console.Write("Ingrese su id: ");
+            Console.Write("\nIngrese su id: ");
             id = int.Parse(Console.ReadLine());
-
-            Vehiculo vehiculo = new Vehiculo(id);
-
+            
+            Cliente cliente = new Cliente(id);
+            
             Console.Write("\nIngrese su tipo: ");
-            vehiculo.tipo = Console.ReadLine();
+            cliente.tipo = Console.ReadLine();
 
             Console.Write("\nIngrese su placa: ");
-            vehiculo.placa = Console.ReadLine();
+            cliente.placa = Console.ReadLine();
 
             Console.Write("\nIngrese su color: ");
-            vehiculo.color = Console.ReadLine();
+            cliente.color = Console.ReadLine();
 
-            Console.WriteLine("\nId del vehiculo: " + vehiculo.id);
-            Console.WriteLine("Tipo de vehiculo: " + vehiculo.tipo);
-            Console.WriteLine("Email del sujeto: " + vehiculo.placa);
-            Console.WriteLine("Username del sujeto: " + vehiculo.color);
+            Console.WriteLine("\nId del vehiculo: " + cliente.id);
+            Console.WriteLine("Tipo de vehiculo: " + cliente.tipo);
+            Console.WriteLine("Email del sujeto: " + cliente.placa);
+            Console.WriteLine("Username del sujeto: " + cliente.color);
             Console.WriteLine("\n");
+
+
+            //pa crear un puesto
+            Console.WriteLine("\nPa crear un puesto de estacionamiento: ");
+            id = 0;
+            string disponible = "";
+
+            Console.Write("\nIngrese su id: ");
+            id = int.Parse(Console.ReadLine());
+
+            Lugar lugar = new Lugar(id);
+
+            Console.Write("\nIngrese su puesto: ");
+            lugar.puesto = Console.ReadLine();
+
+            Console.Write("\nIngrese su disponible: ");
+            lugar.disponible = bool.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nId del lugar: " + lugar.id);
+            Console.WriteLine("Puesto: " + lugar.puesto);
+
+
+            disponible = lugar.disponible == true ? "Disponible" : "Ocupado";
+
+            Console.WriteLine("Disponibilidad del puesto: " + disponible);
             
+
         }
     }
 }
 
 
 
+
+//cambios pa después - jprp xd
 
 //va en Program
 /*
